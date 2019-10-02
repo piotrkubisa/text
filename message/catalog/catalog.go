@@ -48,7 +48,7 @@
 // Selection messages are provided in packages that provide support for a
 // specific linguistic feature. The following snippet uses plural.Selectf:
 //
-//   catalog.Set(language.English, "You are %d minute(s) late.",
+//   message.Set(language.English, "You are %d minute(s) late.",
 //       plural.Selectf(1, "",
 //           plural.One, "You are 1 minute late.",
 //           plural.Other, "You are %d minutes late."))
@@ -72,7 +72,7 @@
 // the plural catogory of the argument, but the rest of the sentence is
 // identical. Using interpolation the above message can be rewritten as:
 //
-//   catalog.Set(language.English, "You are %d minute(s) late.",
+//   message.Set(language.English, "You are %d minute(s) late.",
 //       catalog.Var("minutes",
 //           plural.Selectf(1, "", plural.One, "minute", plural.Other, "minutes")),
 //       catalog.String("You are %[1]d ${minutes} late."))
@@ -80,7 +80,7 @@
 // Var is defined to return the variable name if the message does not yield a
 // match. This allows us to further simplify this snippet to
 //
-//   catalog.Set(language.English, "You are %d minute(s) late.",
+//   message.Set(language.English, "You are %d minute(s) late.",
 //       catalog.Var("minutes", plural.Selectf(1, "", plural.One, "minute")),
 //       catalog.String("You are %d ${minutes} late."))
 //
@@ -89,7 +89,7 @@
 // variant. Consider the following example:
 //
 //   // argument 1: list of hosts, argument 2: list of guests
-//   catalog.Set(language.English, "%[1]v invite(s) %[2]v to their party.",
+//   message.Set(language.English, "%[1]v invite(s) %[2]v to their party.",
 //     catalog.Var("their",
 //         plural.Selectf(1, ""
 //             plural.One, gender.Select(1, "female", "her", "other", "his"))),
@@ -99,7 +99,7 @@
 // Without variable substitution, this would have to be written as
 //
 //   // argument 1: list of hosts, argument 2: list of guests
-//   catalog.Set(language.English, "%[1]v invite(s) %[2]v to their party.",
+//   message.Set(language.English, "%[1]v invite(s) %[2]v to their party.",
 //     plural.Selectf(1, "",
 //         plural.One, gender.Select(1,
 //             "female", "%[1]v invites %[2]v to her party."
